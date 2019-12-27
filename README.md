@@ -1,19 +1,19 @@
 # clean-code-javascript
 
-## Table of Contents
+## সুচিপত্র
 
-1. [Introduction](#introduction)
-2. [ভ্যারিয়েবল](#ভ্যারিয়েবল)
-3. [Functions](#functions)
-4. [Objects and Data Structures](#objects-and-data-structures)
-5. [Classes](#classes)
-6. [SOLID](#solid)
-7. [Testing](#testing)
-8. [Concurrency](#concurrency)
-9. [Error Handling](#error-handling)
-10. [Formatting](#formatting)
-11. [Comments](#comments)
-12. [Translation](#translation)
+১. [Introduction](#introduction)
+২. [ভ্যারিয়েবল](#ভ্যারিয়েবল)
+৩. [Functions](#functions)
+৪. [Objects and Data Structures](#objects-and-data-structures)
+৫. [Classes](#classes)
+৬. [SOLID](#solid)
+৭. [Testing](#testing)
+৮. [Concurrency](#concurrency)
+৯. [Error Handling](#error-handling)
+১০. [Formatting](#formatting)
+১১. [Comments](#comments)
+১২. [Translation](#translation)
 
 ## Introduction
 
@@ -59,7 +59,7 @@ const yyyymmdstr = moment().format("YYYY/MM/DD");
 const currentDate = moment().format("YYYY/MM/DD");
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ উপরে যাও](#সুচিপত্র)**
 
 ### ভ্যারিয়েবলের টাইপ অনুযায়ী একই ধরণের নাম ব্যবহার করা উচিৎ
 
@@ -77,7 +77,7 @@ getCustomerRecord();
 getUser();
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ উপরে যাও](#সুচিপত্র)**
 
 ### সহজেই খুঁজে পাওয়া যায় এমন নাম ব্যবহার করা উচিৎ
 
@@ -103,7 +103,7 @@ const MILLISECONDS_IN_A_DAY = 86400000;
 setTimeout(blastOff, MILLISECONDS_IN_A_DAY);
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ উপরে যাও](#সুচিপত্র)**
 
 ### অর্থপ্রকাশক বা ব্যাখ্যামূলক ভ্যারিয়েবল নাম ব্যবহার করা উচিৎ
 
@@ -127,7 +127,7 @@ const [, city, zipCode] = address.match(cityZipCodeRegex) || [];
 saveCityZipCode(city, zipCode);
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ উপরে যাও](#সুচিপত্র)**
 
 ### আধ্যাত্মিক ম্যাপিং এড়িয়ে চলুন
 
@@ -162,7 +162,7 @@ locations.forEach(location => {
 });
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ উপরে যাও](#সুচিপত্র)**
 
 ### অপ্রয়োজনীয় কনটেক্সট যুক্ত করবেন না
 
@@ -197,7 +197,7 @@ use them
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ উপরে যাও](#সুচিপত্র)**
 
 ### শর্ট সার্কুটিং বা কন্ডিশনালের পরিবর্তে ডিফল্ট আর্গুমেন্ট ব্যবহার করুন
 
@@ -221,7 +221,7 @@ function createMicrobrewery(name = "Hipster Brew Co.") {
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ উপরে যাও](#সুচিপত্র)**
 
 ## **Functions**
 
@@ -277,7 +277,7 @@ createMenu({
 });
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ উপরে যাও](#সুচিপত্র)**
 
 ### Functions should do one thing
 
@@ -313,7 +313,7 @@ function isActiveClient(client) {
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ উপরে যাও](#সুচিপত্র)**
 
 ### Function names should say what they do
 
@@ -341,7 +341,7 @@ const date = new Date();
 addMonthToDate(1, date);
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ উপরে যাও](#সুচিপত্র)**
 
 ### Functions should only be one level of abstraction
 
@@ -413,7 +413,7 @@ function parse(tokens) {
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ উপরে যাও](#সুচিপত্র)**
 
 ### Remove duplicate code
 
@@ -499,7 +499,7 @@ function showEmployeeList(employees) {
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ উপরে যাও](#সুচিপত্র)**
 
 ### Set default objects with Object.assign
 
@@ -552,7 +552,7 @@ function createMenu(config) {
 createMenu(menuConfig);
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ উপরে যাও](#সুচিপত্র)**
 
 ### Don't use flags as function parameters
 
@@ -582,7 +582,7 @@ function createTempFile(name) {
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ উপরে যাও](#সুচিপত্র)**
 
 ### Avoid Side Effects (part 1)
 
@@ -631,7 +631,7 @@ console.log(name); // 'Ryan McDermott';
 console.log(newName); // ['Ryan', 'McDermott'];
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ উপরে যাও](#সুচিপত্র)**
 
 ### Avoid Side Effects (part 2)
 
@@ -684,7 +684,7 @@ const addItemToCart = (cart, item) => {
 };
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ উপরে যাও](#সুচিপত্র)**
 
 ### Don't write to global functions
 
@@ -718,7 +718,7 @@ class SuperArray extends Array {
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ উপরে যাও](#সুচিপত্র)**
 
 ### Favor functional programming over imperative programming
 
@@ -783,7 +783,7 @@ const totalOutput = programmerOutput.reduce(
 );
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ উপরে যাও](#সুচিপত্র)**
 
 ### Encapsulate conditionals
 
@@ -807,7 +807,7 @@ if (shouldShowSpinner(fsmInstance, listNodeInstance)) {
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ উপরে যাও](#সুচিপত্র)**
 
 ### Avoid negative conditionals
 
@@ -835,7 +835,7 @@ if (isDOMNodePresent(node)) {
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ উপরে যাও](#সুচিপত্র)**
 
 ### Avoid conditionals
 
@@ -895,7 +895,7 @@ class Cessna extends Airplane {
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ উপরে যাও](#সুচিপত্র)**
 
 ### Avoid type-checking (part 1)
 
@@ -924,7 +924,7 @@ function travelToTexas(vehicle) {
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ উপরে যাও](#সুচিপত্র)**
 
 ### Avoid type-checking (part 2)
 
@@ -961,7 +961,7 @@ function combine(val1, val2) {
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ উপরে যাও](#সুচিপত্র)**
 
 ### Don't over-optimize
 
@@ -989,7 +989,7 @@ for (let i = 0; i < list.length; i++) {
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ উপরে যাও](#সুচিপত্র)**
 
 ### Remove dead code
 
@@ -1023,7 +1023,7 @@ const req = newRequestModule;
 inventoryTracker("apples", req, "www.inventory-awesome.io");
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ উপরে যাও](#সুচিপত্র)**
 
 ## **Objects and Data Structures**
 
@@ -1086,7 +1086,7 @@ const account = makeBankAccount();
 account.setBalance(100);
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ উপরে যাও](#সুচিপত্র)**
 
 ### Make objects have private members
 
@@ -1126,7 +1126,7 @@ delete employee.name;
 console.log(`Employee name: ${employee.getName()}`); // Employee name: John Doe
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ উপরে যাও](#সুচিপত্র)**
 
 ## **Classes**
 
@@ -1213,7 +1213,7 @@ class Human extends Mammal {
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ উপরে যাও](#সুচিপত্র)**
 
 ### Use method chaining
 
@@ -1293,7 +1293,7 @@ class Car {
 const car = new Car("Ford", "F-150", "red").setColor("pink").save();
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ উপরে যাও](#সুচিপত্র)**
 
 ### Prefer composition over inheritance
 
@@ -1363,7 +1363,7 @@ class Employee {
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ উপরে যাও](#সুচিপত্র)**
 
 ## **SOLID**
 
@@ -1425,7 +1425,7 @@ class UserSettings {
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ উপরে যাও](#সুচিপত্র)**
 
 ### Open/Closed Principle (OCP)
 
@@ -1516,7 +1516,7 @@ class HttpRequester {
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ উপরে যাও](#সুচিপত্র)**
 
 ### Liskov Substitution Principle (LSP)
 
@@ -1635,7 +1635,7 @@ const shapes = [new Rectangle(4, 5), new Rectangle(4, 5), new Square(5)];
 renderLargeShapes(shapes);
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ উপরে যাও](#সুচিপত্র)**
 
 ### Interface Segregation Principle (ISP)
 
@@ -1713,7 +1713,7 @@ const $ = new DOMTraverser({
 });
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ উপরে যাও](#সুচিপত্র)**
 
 ### Dependency Inversion Principle (DIP)
 
@@ -1816,7 +1816,7 @@ const inventoryTracker = new InventoryTracker(
 inventoryTracker.requestItems();
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ উপরে যাও](#সুচিপত্র)**
 
 ## **Testing**
 
@@ -1887,7 +1887,7 @@ describe("MomentJS", () => {
 });
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ উপরে যাও](#সুচিপত্র)**
 
 ## **Concurrency**
 
@@ -1938,7 +1938,7 @@ get("https://en.wikipedia.org/wiki/Robert_Cecil_Martin")
   });
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ উপরে যাও](#সুচিপত্র)**
 
 ### Async/Await are even cleaner than Promises
 
@@ -1985,7 +1985,7 @@ async function getCleanCodeArticle() {
 getCleanCodeArticle();
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ উপরে যাও](#সুচিপত্র)**
 
 ## **Error Handling**
 
@@ -2064,7 +2064,7 @@ getdata()
   });
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ উপরে যাও](#সুচিপত্র)**
 
 ## **Formatting**
 
@@ -2115,7 +2115,7 @@ class Animal {}
 class Alpaca {}
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ উপরে যাও](#সুচিপত্র)**
 
 ### Function callers and callees should be close
 
@@ -2203,7 +2203,7 @@ const review = new PerformanceReview(employee);
 review.perfReview();
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ উপরে যাও](#সুচিপত্র)**
 
 ## **Comments**
 
@@ -2250,7 +2250,7 @@ function hashIt(data) {
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ উপরে যাও](#সুচিপত্র)**
 
 ### Don't leave commented out code in your codebase
 
@@ -2271,7 +2271,7 @@ doStuff();
 doStuff();
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ উপরে যাও](#সুচিপত্র)**
 
 ### Don't have journal comments
 
@@ -2300,7 +2300,7 @@ function combine(a, b) {
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ উপরে যাও](#সুচিপত্র)**
 
 ### Avoid positional markers
 
@@ -2339,7 +2339,7 @@ const actions = function() {
 };
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ উপরে যাও](#সুচিপত্র)**
 
 ## Translation
 
@@ -2367,4 +2367,4 @@ This is also available in other languages:
 - ![it](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Italy.png) **Italian**:
   [frappacchio/clean-code-javascript/](https://github.com/frappacchio/clean-code-javascript/)
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ উপরে যাও](#সুচিপত্র)**
