@@ -2,21 +2,18 @@
 
 ## সুচিপত্র
 
-
-১. [Introduction](#introduction)
-২. [ভ্যারিয়েবল](#ভ্যারিয়েবল)
-৩. [Functions](#functions)
-৪. [Objects and Data Structures](#objects-and-data-structures)
-৫. [Classes](#classes)
-৬. [SOLID](#solid)
-৭. [Testing](#testing)
-৮. [Concurrency](#concurrency)
-৯. [Error Handling](#error-handling)
-১০. [Formatting](#formatting)
-১১. [Comments](#comments)
-১২. [Translation](#translation)
-
-
+1. [Introduction](#introduction)
+2. [ভ্যারিয়েবল](#ভ্যারিয়েবল)
+3. [Functions](#functions)
+4. [Objects and Data Structures](#objects-and-data-structures)
+5. [Classes](#classes)
+6. [SOLID](#solid)
+7. [Testing](#testing)
+8. [Concurrency](#concurrency)
+9. [Error Handling](#error-handling)
+10. [Formatting](#formatting)
+11. [Comments](#comments)
+12. [Translation](#translation)
 
 ## Introduction
 
