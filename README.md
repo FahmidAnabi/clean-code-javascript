@@ -2,9 +2,9 @@
 
 ## সুচিপত্র
 
-1. [Introduction](#introduction)
+1. [পরিচিতি](#পরিচিতি)
 2. [ভ্যারিয়েবল](#ভ্যারিয়েবল)
-3. [Functions](#functions)
+3. [ফাংশন](#ফাংশন)
 4. [Objects and Data Structures](#objects-and-data-structures)
 5. [Classes](#classes)
 6. [SOLID](#solid)
@@ -15,17 +15,19 @@
 11. [Comments](#comments)
 12. [Translation](#translation)
 
-## Introduction
+## পরিচিতি
 
 ![Humorous image of software quality estimation as a count of how many expletives
 you shout when reading code](https://www.osnews.com/images/comics/wtfm.jpg)
 
-Software engineering principles, from Robert C. Martin's book
-[_Clean Code_](https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882),
-adapted for JavaScript. This is not a style guide. It's a guide to producing
-[readable, reusable, and refactorable](https://github.com/ryanmcdermott/3rs-of-software-architecture) software in JavaScript.
 
-Not every principle herein has to be strictly followed, and even fewer will be
+সফটওয়্যার ইঞ্জিনিয়ারিং প্রিন্সিপাল Robert C. Martin এর বই
+[_Clean Code_](https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882),
+থেকে জাভাস্ক্রিপ্টের জন্য নেওয়া হয়েছে। এটি কোন স্টাইল গাইড নয়। এই গাইডটি জাভাস্ক্রিপ্ট দিয়ে
+[readable, reusable, and refactorable](https://github.com/ryanmcdermott/3rs-of-software-architecture)
+সফটওয়্যার বানাতে সহয়তা করবে।
+
+<!-- Not every principle herein has to be strictly followed, and even fewer will be
 universally agreed upon. These are guidelines and nothing more, but they are
 ones codified over many years of collective experience by the authors of
 _Clean Code_.
@@ -41,7 +43,7 @@ developer, and working with them for many years doesn't mean you won't make
 mistakes. Every piece of code starts as a first draft, like wet clay getting
 shaped into its final form. Finally, we chisel away the imperfections when
 we review it with our peers. Don't beat yourself up for first drafts that need
-improvement. Beat up the code instead!
+improvement. Beat up the code instead! -->
 
 ## **ভ্যারিয়েবল**
 
@@ -223,36 +225,21 @@ function createMicrobrewery(name = "Hipster Brew Co.") {
 
 **[⬆ উপরে যাও](#সুচিপত্র)**
 
-## **Functions**
+## **ফাংশন**
 
-### Function arguments (2 or fewer ideally)
+### ফাংশন আর্গুমেন্ট (২ অথবা তার চেয়ে কম)
 
-Limiting the amount of function parameters is incredibly important because it
-makes testing your function easier. Having more than three leads to a
-combinatorial explosion where you have to test tons of different cases with
-each separate argument.
+ফাংশন প্যারামিটারের সংখ্যা সীমাবদ্ধে রাখা অত্যন্ত গুরুত্বপূর্ণ, কারণ এতে ফাংশনটিকে পরীক্ষা করা অধিকর সহজ হয়ে যায়। তিনটিরও বেশি সংখ্যক প্যারামিটার একত্রিত হলে বিস্ফোরণের দিকে যাবে, যেখানে আপনাকে বিভিন্ন সংখ্যক কেস পরীক্ষা করতে হবে প্রতিটি আর্গুমেন্ট এর জন্য।
 
-One or two arguments is the ideal case, and three should be avoided if possible.
-Anything more than that should be consolidated. Usually, if you have
-more than two arguments then your function is trying to do too much. In cases
-where it's not, most of the time a higher-level object will suffice as an
-argument.
+এক্ষেত্রে এক বা দুটি আর্গুমেন্ট হল আদর্শ এবং তিনটি যত সম্ভব এড়ানো উচিত, এর চেয়ে বেশি হলে একত্র করা উচিত। সাধারণত, আপনার যদি দুটিরও বেশি আর্গুমেন্ট থাকে তবে আপনার ফাংশনটি অনেক বেশি কাজ করার চেষ্টা করে। যেক্ষেত্রে এমন হয় না, সেক্ষেত্রে প্রায়শই হাই লেভেলের অবজেক্ট আর্গুমেন্ট হিসেবে কাজ করে।
 
-Since JavaScript allows you to make objects on the fly, without a lot of class
-boilerplate, you can use an object if you are finding yourself needing a
-lot of arguments.
+যেহেতু অনেকগুলো ক্লাস বয়লারপ্লেট ছাড়াই জাভাস্ক্রিপ্ট আপনাকে এমনিতেই অবজেক্ট তৈরি করতে দেয়, যদি আপনার অনেক বেশি আর্গুমেন্ট এর দরকার হয়ে থাকে তাহলে আর্গুমেন্ট হিসেবে আপনি একটি অবজেক্ট ব্যবহার করতে পারেন।
 
-To make it obvious what properties the function expects, you can use the ES2015/ES6
-destructuring syntax. This has a few advantages:
+ফাংশনটি কী কী বৈশিষ্ট্য প্রত্যাশা করে তা স্পষ্ট করে তুলতে, আপনি ES2015/ES6 ডেস্ট্রাকচারিং সিনট্যাক্স ব্যবহার করতে পারেন। এর কয়েকটি সুবিধা রয়েছে:
 
-1. When someone looks at the function signature, it's immediately clear what
-   properties are being used.
-2. Destructuring also clones the specified primitive values of the argument
-   object passed into the function. This can help prevent side effects. Note:
-   objects and arrays that are destructured from the argument object are NOT
-   cloned.
-3. Linters can warn you about unused properties, which would be impossible
-   without destructuring.
+1. যখন কেউ ফাংশনটিকে দেখবে, এটি সাথেসাথে কি কি প্রোপার্টি ব্যবহার করা হয়েছে তা বলে দিবে।
+2. ডেস্ট্রাকচারিং ফাংশনে প্রেরণ করা আর্গুমেন্টের নির্দিষ্ট প্রিমিটিভ ভ্যালু গুলিও ক্লোন করে। এটি পার্শ্ব প্রতিক্রিয়া রোধ করতে সহায়তা করতে পারে। বি.দ্রঃ অবজেক্ট এবং অ্যারে যেগুলো আর্গুমেন্ট অবজেক্ট হতে ডেস্ট্রাকচার্ড সেগুলো ক্লোন করা হয় না।
+3. লিন্টারগুলো অব্যবহৃত প্রোপার্টি সম্পর্কে সতর্ক করতে পারে, যেটা ডেস্ট্রাকচারিং ছাড়া অসম্ভব হবে।
 
 **খারাপ:**
 
@@ -279,13 +266,9 @@ createMenu({
 
 **[⬆ উপরে যাও](#সুচিপত্র)**
 
-### Functions should do one thing
+### ফাংশনের একটি জিনিস করা উচিত
 
-This is by far the most important rule in software engineering. When functions
-do more than one thing, they are harder to compose, test, and reason about.
-When you can isolate a function to just one action, they can be refactored
-easily and your code will read much cleaner. If you take nothing else away from
-this guide other than this, you'll be ahead of many developers.
+এটি এখন পর্যন্ত সফ্টওয়্যার ইঞ্জিনিয়ারিংয়ের সবচেয়ে গুরুত্বপূর্ণ নিয়ম। ফাংশনগুলি যখন একাধিক জিনিস করে তখন এদের কম্পোস এবং টেস্ট করা অনেক কঠিন হয়ে যায়। আপনি যখন কেবল একটি কাজে কোন ফাংশনকে আলাদা করতে পারেন, তখন এগুলি সহজেই রিফ্যাক্টর করা যায় এবং আপনার কোডটি আরও পরিষ্কার পরিচ্ছন্ন থাকবে। আপনি যদি এই ছাড়া অন্য কিছু এই গাইড থেকে না নিয়েও থাকেন, এরপরেও অনেক ডেভলপার হতে আপনি এগিয়ে থাকবেন।
 
 **খারাপ:**
 
@@ -315,7 +298,7 @@ function isActiveClient(client) {
 
 **[⬆ উপরে যাও](#সুচিপত্র)**
 
-### Function names should say what they do
+### ফাংশন যা কাজ করে সেটাই নাম হওয়া উচিৎ
 
 **খারাপ:**
 
@@ -343,11 +326,9 @@ addMonthToDate(1, date);
 
 **[⬆ উপরে যাও](#সুচিপত্র)**
 
-### Functions should only be one level of abstraction
+### ফাংশনগুলোতে শুধুমাত্র এক স্তরের অ্যাবস্ট্রাকশন থাকা উচিৎ
 
-When you have more than one level of abstraction your function is usually
-doing too much. Splitting up functions leads to reusability and easier
-testing.
+যখন আপনার একাধিক স্তরের অ্যাবস্ট্রাকশন থাকে তখন আপনার ফাংশনটি সাধারণত খুব বেশি কাজ করে। ফাংশনগুলি বিভক্ত করলে পুনরায় ব্যবহারযোগ্যতা এবং সহজেই টেস্ট করার দিকে ধাবিত করে।
 
 **খারাপ:**
 
@@ -415,11 +396,9 @@ function parse(tokens) {
 
 **[⬆ উপরে যাও](#সুচিপত্র)**
 
-### Remove duplicate code
+### ডুপ্লিকেট কোড রিমুভ করতে হবে
 
-Do your absolute best to avoid duplicate code. Duplicate code is খারাপ because it
-means that there's more than one place to alter something if you need to change
-some logic.
+ডুপ্লিকেট কোড এড়াতে আপনার সর্বোচ্চ চেষ্টা করুন। ডুপ্লিকেট কোড অত্যন্ত খারাপ কারণ কোথাও কোন লজিক পরিবর্তন করতে হলে অনেক জায়গার লজিক/কোড পরিবর্তন করতে হবে।
 
 Imagine if you run a restaurant and you keep track of your inventory: all your
 tomatoes, onions, garlic, spices, etc. If you have multiple lists that
@@ -686,7 +665,7 @@ const addItemToCart = (cart, item) => {
 
 **[⬆ উপরে যাও](#সুচিপত্র)**
 
-### Don't write to global functions
+### Don't write to global ফাংশন
 
 Polluting globals is a খারাপ practice in JavaScript because you could clash with another
 library and the user of your API would be none-the-wiser until they get an
@@ -1024,7 +1003,7 @@ inventoryTracker("apples", req, "www.inventory-awesome.io");
 ```
 
 **[⬆ উপরে যাও](#সুচিপত্র)**
-
+<!--
 ## **Objects and Data Structures**
 
 ### Use getters and setters
@@ -2367,4 +2346,4 @@ This is also available in other languages:
 - ![it](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Italy.png) **Italian**:
   [frappacchio/clean-code-javascript/](https://github.com/frappacchio/clean-code-javascript/)
 
-**[⬆ উপরে যাও](#সুচিপত্র)**
+**[⬆ উপরে যাও](#সুচিপত্র)** -->
