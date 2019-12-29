@@ -22,9 +22,9 @@ you shout when reading code](https://www.osnews.com/images/comics/wtfm.jpg)
 
 
 সফটওয়্যার ইঞ্জিনিয়ারিং প্রিন্সিপাল Robert C. Martin এর বই
-[_Clean Code_](https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882),
-থেকে জাভাস্ক্রিপ্টের জন্য নেওয়া হয়েছে। এটি কোন স্টাইল গাইড নয়। এই গাইডটি জাভাস্ক্রিপ্ট দিয়ে
-[readable, reusable, and refactorable](https://github.com/ryanmcdermott/3rs-of-software-architecture)
+[_Clean Code_](https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882)
+ থেকে জাভাস্ক্রিপ্টের জন্য নেওয়া হয়েছে। এটি কোন স্টাইল গাইড নয়। এই গাইডটি জাভাস্ক্রিপ্ট দিয়ে
+[readable, reusable, এবং refactorable](https://github.com/ryanmcdermott/3rs-of-software-architecture)
 সফটওয়্যার বানাতে সহয়তা করবে।
 
 <!-- Not every principle herein has to be strictly followed, and even fewer will be
@@ -400,11 +400,8 @@ function parse(tokens) {
 
 ডুপ্লিকেট কোড এড়াতে আপনার সর্বোচ্চ চেষ্টা করুন। ডুপ্লিকেট কোড অত্যন্ত খারাপ কারণ কোথাও কোন লজিক পরিবর্তন করতে হলে অনেক জায়গার লজিক/কোড পরিবর্তন করতে হবে।
 
-Imagine if you run a restaurant and you keep track of your inventory: all your
-tomatoes, onions, garlic, spices, etc. If you have multiple lists that
-you keep this on, then all have to be updated when you serve a dish with
-tomatoes in them. If you only have one list, there's only one place to update!
-
+কল্পনা করুন আপনি কোনও রেস্তোরাঁ চালাচ্ছেন এবং নিজেই বাজারের তালিকা ট্র্যাক করেনঃ আপনার সকল টমেটো, পেঁয়াজ, রসুন, মশলা ইত্যাদি। আপনার যদি এমন একাধিক তালিকা থাকে যা আপনি ট্রাক রাখেন, যখন আপনি টমেটো দিয়ে কোন খাবার পরিবেশন করবেন তখন আপনাকে সকল তালিকা আপডেট করতে হবে। যদি আপনার কেবল একটিই তালিকা থাকে তাহলে কেবলমাত্র একটি জায়গায় আপডেট করলেই হবে।
+<!--
 Oftentimes you have duplicate code because you have two or more slightly
 different things, that share a lot in common, but their differences force you
 to have two or more separate functions that do much of the same things. Removing
@@ -415,7 +412,7 @@ Getting the abstraction right is critical, that's why you should follow the
 SOLID principles laid out in the _Classes_ section. খারাপ abstractions can be
 worse than duplicate code, so be careful! Having said this, if you can make
 a ভালো abstraction, do it! Don't repeat yourself, otherwise you'll find yourself
-updating multiple places anytime you want to change one thing.
+updating multiple places anytime you want to change one thing. -->
 
 **খারাপ:**
 
@@ -533,9 +530,9 @@ createMenu(menuConfig);
 
 **[⬆ উপরে যাও](#সুচিপত্র)**
 
-### Don't use flags as function parameters
+### ফাংশন প্যারামিটার হিসেবে ফ্ল্যাগ ব্যবহার করা উচিৎ নয়
 
-Flags tell your user that this function does more than one thing. Functions should do one thing. Split out your functions if they are following different code paths based on a boolean.
+ফ্ল্যাগ ব্যবহারকারীকে নির্দেশনা দেয় যে এই ফাংশন একাধিক কাজ করে। ফাংশনের শুধুমাত্র একটি কাজ করা উচিৎ। আপনার ফাংশনগুলি আলাদা করুন যদি তারা কোন বুলিয়ানের উপর ভিত্তি করে ভিন্ন কোড পাথ অনুসরণ করে।
 
 **খারাপ:**
 
@@ -563,22 +560,13 @@ function createTempFile(name) {
 
 **[⬆ উপরে যাও](#সুচিপত্র)**
 
-### Avoid Side Effects (part 1)
+### পার্শ্ব প্রতিক্রিয়া এড়িয়ে চলুন (প্রথম অংশ)
 
-A function produces a side effect if it does anything other than take a value in
-and return another value or values. A side effect could be writing to a file,
-modifying some global variable, or accidentally wiring all your money to a
-stranger.
+একটি ফাংশন তখনই কোন পার্শ্ব প্রতিক্রিয়া তৈরি করে যখন এটি একটি ভ্যালু গ্রহণ করে এবং অন্য ভ্যালু বা একের অধিক ভ্যালু রিটার্ন করে। পার্শ্ব প্রতিক্রিয়া যে কোন কিছু হতে পারে। যেমনঃ কোন ফাইলে লেখা, গ্লোবাল ভ্যারিয়েবলের পরিবর্তন অথবা দুর্ঘটনাক্রমে আপনার সমস্ত টাকা কোন অপরিচিত ব্যক্তিকে পাঠিয়ে দেওয়া ইত্যাদি।
 
-Now, you do need to have side effects in a program on occasion. Like the previous
-example, you might need to write to a file. What you want to do is to
-centralize where you are doing this. Don't have several functions and classes
-that write to a particular file. Have one service that does it. One and only one.
+এখন, আপনার বিশেষ উপলক্ষে আপনার প্রোগ্রামে পার্শ্ব প্রতিক্রিয়া থাকা দরকার। পূর্ববর্তী উদাহরণের মতো, আপনার হয়ত কোন ফাইল লিখতে হবে। আপনি এখন যা করতে চান তা হল, আপনি যেখানে এটি করছেন সেটা একত্রিত করা। একটি নির্দিষ্ট ফাইলে লেখার জন্য বেশ কয়েকটি ফাংশন এবং ক্লাস নেই। একটি ফাংশন আছে যেটা এই কাজ করে এবং কেবল মাত্র একটিই ফাংশন।
 
-The main point is to avoid common pitfalls like sharing state between objects
-without any structure, using mutable data types that can be written to by anything,
-and not centralizing where your side effects occur. If you can do this, you will
-be happier than the vast majority of other programmers.
+মূল বিষয় হচ্ছে কোনও কাঠামো ছাড়াই অবজেক্টের মধ্যে স্টেট ভাগ করে নেওয়ার মতো সাধারণ সমস্যাগুলি এড়াতে চলা, পরিবর্তনীয় ডেটা টাইপ ব্যবহার করা যা কোন কিছু দ্বারা লেখা যাবে এবং আপনি অন্যান্য সংখ্যাগরিষ্ঠ প্রোগ্রামারদের চেয়ে সুখী থাকবেন।
 
 **খারাপ:**
 
@@ -612,15 +600,11 @@ console.log(newName); // ['Ryan', 'McDermott'];
 
 **[⬆ উপরে যাও](#সুচিপত্র)**
 
-### Avoid Side Effects (part 2)
+### পার্শ্ব প্রতিক্রিয়া এড়িয়ে চলুন (দ্বিতীয় অংশ)
 
-In JavaScript, primitives are passed by value and objects/arrays are passed by
-reference. In the case of objects and arrays, if your function makes a change
-in a shopping cart array, for example, by adding an item to purchase,
-then any other function that uses that `cart` array will be affected by this
-addition. That may be great, however it can be খারাপ too. Let's imagine a খারাপ
-situation:
+জাভাস্ক্রিপ্টে প্রিমিটিভগুলো ভ্যালু এবং অবজেক্ট/অ্যারে গুলো রেফারেন্স দিয়ে পাস হয়। অবজেক্ট এবং অ্যারের ক্ষেত্রে,যদি আপনার ফাংশন কোনও শপিং কার্ট অ্যারে পরিবর্তন করে উদাহরণ্বরূপঃ কেনার জন্য একটি আইটেম এড করলে  `cart` অ্যারে ব্যবহার করা অন্য কোন ফাংশনও এই সংযোজন দ্বারা প্রভাবিত হবে। এটি দুর্দান্ত হতে পারে, তবে এটি খারাপও হতে পারে।
 
+<!-- Let's imagine a খারাপ situation:
 The user clicks the "Purchase", button which calls a `purchase` function that
 spawns a network request and sends the `cart` array to the server. Because
 of a খারাপ network connection, the `purchase` function has to keep retrying the
@@ -645,7 +629,7 @@ Two caveats to mention to this approach:
    this isn't a big issue in practice because there are
    [great libraries](https://facebook.github.io/immutable-js/) that allow
    this kind of programming approach to be fast and not as memory intensive as
-   it would be for you to manually clone objects and arrays.
+   it would be for you to manually clone objects and arrays. -->
 
 **খারাপ:**
 
@@ -665,17 +649,9 @@ const addItemToCart = (cart, item) => {
 
 **[⬆ উপরে যাও](#সুচিপত্র)**
 
-### Don't write to global ফাংশন
+### গ্লোবাল ফাংশনে লিখবেন না
 
-Polluting globals is a খারাপ practice in JavaScript because you could clash with another
-library and the user of your API would be none-the-wiser until they get an
-exception in production. Let's think about an example: what if you wanted to
-extend JavaScript's native Array method to have a `diff` method that could
-show the difference between two arrays? You could write your new function
-to the `Array.prototype`, but it could clash with another library that tried
-to do the same thing. What if that other library was just using `diff` to find
-the difference between the first and last elements of an array? This is why it
-would be much better to just use ES2015/ES6 classes and simply extend the `Array` global.
+জাভাস্ক্রিপ্টে গ্লোবাল কোন কিছু ্ নষ্ট করা বা পরিবর্তন করা অত্যন্ত খারাপ প্রাকটিস কারণ আপনি অন্য একটি লাইব্রেরির সঙ্গে ক্লাস ঘটাতে পারেন এবং আপনার API ব্যবহারকারীরা ততক্ষণ পর্যন্ত টের পাবে না যতক্ষণ না তারা কোন ব্যতিক্রম কিছু লক্ষ্য করবে। একটি উদাহরণ সম্পর্কে চিন্তা করা যাক: ধরে নেন আপনি জাভাস্ক্রিপ্টের একটা নেটিভ অ্যারে মেথডকে এক্সটেন্ড করতে চান যেন সেখানে আরেকটি `diff` নামের মেথড থাকে যেটি দুটি অ্যারের মধ্যে পার্থক্য দেখাতে পারে। আপনি চাইলে `Array.prototype`-এ একটি নতুন ফাংশন লিখতে পারেন কিন্তু এতে অন্য কোন লাইব্রেরির সাথে সংঘর্ষ হতে পারে যারা একই কাজ করে। তখন কি হবে যদি আরেকটি লাইব্রেরি `diff` ব্যবহার করত শুধুমাত্র একটি অ্যারের প্রথম এবং শেষ ইলিমেন্টের মধ্যে পার্থক্য বের করার জন্য? এজন্যই ES2015/ES6 ক্লাস ব্যবহার করা আরও ভাল হবে এবং এটা সিম্পলি গ্লোবাল `Array` এক্সটেন্ড করবে।
 
 **খারাপ:**
 
@@ -699,11 +675,12 @@ class SuperArray extends Array {
 
 **[⬆ উপরে যাও](#সুচিপত্র)**
 
-### Favor functional programming over imperative programming
+### ফাংশনাল প্রোগ্রামিংকে ইমপারেটিভ প্রোগ্রামিং থেকে বেশি গুরুত্ব দিন
+
 
 JavaScript isn't a functional language in the way that Haskell is, but it has
 a functional flavor to it. Functional languages can be cleaner and easier to test.
-Favor this style of programming when you can.
+Favor this style of programming when you can.য়া 
 
 **খারাপ:**
 
